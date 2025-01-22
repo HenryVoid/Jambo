@@ -10,6 +10,7 @@
 		6C546EED2D412FFB00F9D864 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6C546EEC2D412FFB00F9D864 /* ComposableArchitecture */; };
 		6C546EF02D41302C00F9D864 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C546EEF2D41302C00F9D864 /* NetworkKit */; };
 		6C5474072D4133DC00F9D864 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6C5474062D4133DC00F9D864 /* Debug.xcconfig */; };
+		6C5477242D41451900F9D864 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C5477232D41451900F9D864 /* NetworkKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C5477242D41451900F9D864 /* NetworkKit in Frameworks */,
 				6C546EF02D41302C00F9D864 /* NetworkKit in Frameworks */,
 				6C546EED2D412FFB00F9D864 /* ComposableArchitecture in Frameworks */,
 			);
@@ -137,6 +139,7 @@
 			packageProductDependencies = (
 				6C546EEC2D412FFB00F9D864 /* ComposableArchitecture */,
 				6C546EEF2D41302C00F9D864 /* NetworkKit */,
+				6C5477232D41451900F9D864 /* NetworkKit */,
 			);
 			productName = Jambo;
 			productReference = 6C546EBE2D412F4500F9D864 /* Jambo.app */;
@@ -222,7 +225,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				6C546EEB2D412FFB00F9D864 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				6C546EEE2D41302C00F9D864 /* XCLocalSwiftPackageReference "../Network" */,
+				6C5477222D41451900F9D864 /* XCLocalSwiftPackageReference "../Network" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C546EBF2D412F4500F9D864 /* Products */;
@@ -602,7 +605,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		6C546EEE2D41302C00F9D864 /* XCLocalSwiftPackageReference "../Network" */ = {
+		6C5477222D41451900F9D864 /* XCLocalSwiftPackageReference "../Network" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Network;
 		};
@@ -626,6 +629,10 @@
 			productName = ComposableArchitecture;
 		};
 		6C546EEF2D41302C00F9D864 /* NetworkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkKit;
+		};
+		6C5477232D41451900F9D864 /* NetworkKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkKit;
 		};
