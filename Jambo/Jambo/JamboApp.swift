@@ -11,7 +11,12 @@ import SwiftUI
 struct JamboApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CardListView(store: .init(
+                initialState: .init(),
+                reducer: {
+                    CardListReducer()
+                }
+            ))
         }
     }
 }
