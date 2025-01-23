@@ -11,6 +11,7 @@
 		6C546EF02D41302C00F9D864 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C546EEF2D41302C00F9D864 /* NetworkKit */; };
 		6C5474072D4133DC00F9D864 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6C5474062D4133DC00F9D864 /* Debug.xcconfig */; };
 		6C5477242D41451900F9D864 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C5477232D41451900F9D864 /* NetworkKit */; };
+		6C547A0C2D42067300F9D864 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 6C547A0B2D42067300F9D864 /* DesignSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 				6C5477242D41451900F9D864 /* NetworkKit in Frameworks */,
 				6C546EF02D41302C00F9D864 /* NetworkKit in Frameworks */,
 				6C546EED2D412FFB00F9D864 /* ComposableArchitecture in Frameworks */,
+				6C547A0C2D42067300F9D864 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +142,7 @@
 				6C546EEC2D412FFB00F9D864 /* ComposableArchitecture */,
 				6C546EEF2D41302C00F9D864 /* NetworkKit */,
 				6C5477232D41451900F9D864 /* NetworkKit */,
+				6C547A0B2D42067300F9D864 /* DesignSystem */,
 			);
 			productName = Jambo;
 			productReference = 6C546EBE2D412F4500F9D864 /* Jambo.app */;
@@ -226,6 +229,7 @@
 			packageReferences = (
 				6C546EEB2D412FFB00F9D864 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				6C5477222D41451900F9D864 /* XCLocalSwiftPackageReference "../Network" */,
+				6C547A0A2D42067300F9D864 /* XCLocalSwiftPackageReference "../DesignSystem" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C546EBF2D412F4500F9D864 /* Products */;
@@ -609,6 +613,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Network;
 		};
+		6C547A0A2D42067300F9D864 /* XCLocalSwiftPackageReference "../DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../DesignSystem;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -635,6 +643,10 @@
 		6C5477232D41451900F9D864 /* NetworkKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkKit;
+		};
+		6C547A0B2D42067300F9D864 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

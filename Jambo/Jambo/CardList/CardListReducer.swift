@@ -8,6 +8,7 @@
 import Foundation
 import ComposableArchitecture
 import NetworkKit
+import DesignSystem
 
 @Reducer
 struct CardListReducer {
@@ -20,7 +21,7 @@ struct CardListReducer {
     
     enum Action {
         case onLoad
-        case cardListResponse(Result<CardListDTO.Response, API.Error>)
+        case cardListResponse(Result<CardListDTO.Response, Error>)
     }
     
     private enum CancelID: Hashable { case list }
@@ -41,8 +42,8 @@ struct CardListReducer {
                 Log.debug("CardListResponse Success", response)
                 return .none
             case .cardListResponse(.failure(let error)):
-                // TODO: Error 처리
-                Log.debug("CardListResponse failure", error)
+                Toast.shared.present(title: error.localizedDescription)
+                Log.error("CardListResponse failure", error)
                 return .none
             }
         }

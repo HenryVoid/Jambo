@@ -7,17 +7,22 @@
 
 import SwiftUI
 import ComposableArchitecture
+import DesignSystem
 
 struct CardListView: View {
     @Bindable var store: StoreOf<CardListReducer>
     
     var body: some View {
-        Button {
-            store.send(.onLoad)
-        } label: {
-            Text("API")
+        LazyVStack {
+            
         }
+        .background { Color(.lightGray) }
+        .searchTopBar(leftAction: {}, rightAction: {})
     }
+}
+
+extension CardListView {
+    
 }
 
 #Preview {
