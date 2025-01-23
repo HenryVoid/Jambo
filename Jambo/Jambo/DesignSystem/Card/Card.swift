@@ -21,7 +21,8 @@ struct Card: View {
             ProfileSection(model: model.profile)
             BodySection(model: model.body)
             
-            Line().frame(height: 0.5).background(.lineLight)
+            Line().frame(height: 0.5)
+                .background { Color(.lineLight) }
         }
         .padding(16)
     }
