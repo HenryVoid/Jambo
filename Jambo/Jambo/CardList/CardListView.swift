@@ -9,11 +9,22 @@ import SwiftUI
 import ComposableArchitecture
 
 struct CardListView: View {
+    @Bindable var store: StoreOf<CardListReducer>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            store.send(.onLoad)
+        } label: {
+            Text("API")
+        }
     }
 }
 
 #Preview {
-    CardListView()
+    CardListView(store: .init(
+        initialState: .init(),
+        reducer: {
+            CardListReducer()
+        }
+    ))
 }
