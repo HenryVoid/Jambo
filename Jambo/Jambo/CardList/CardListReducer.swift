@@ -8,7 +8,6 @@
 import Foundation
 import ComposableArchitecture
 import NetworkKit
-import DesignSystem
 
 @Reducer
 struct CardListReducer {

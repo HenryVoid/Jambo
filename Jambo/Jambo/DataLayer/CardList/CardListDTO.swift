@@ -14,14 +14,14 @@ enum CardListDTO {
     }
     
     // MARK: - List
-    struct List: Codable {
+    struct List: Codable, Sendable {
         let cardType: String?
         let profile: Profile?
         let card: Card?
     }
 
     // MARK: - Card
-    struct Card: Codable {
+    struct Card: Codable, Sendable {
         let cardType, cardID: String?
         let category: Category?
         let body: String?
@@ -37,7 +37,7 @@ enum CardListDTO {
     }
 
     // MARK: - ProfileImage
-    struct ProfileImage: Codable {
+    struct ProfileImage: Codable, Sendable {
         let width, height: Int?
         let imageURL: String?
 
@@ -45,10 +45,12 @@ enum CardListDTO {
             case width, height
             case imageURL = "imageUrl"
         }
+        
+        static let mock: Self = .init(width: 40, height: 40, imageURL: "")
     }
 
     // MARK: - Category
-    struct Category: Codable {
+    struct Category: Codable, Sendable {
         let name: String?
         let imageURL: String?
 
@@ -59,14 +61,14 @@ enum CardListDTO {
     }
 
     // MARK: - Connect
-    struct Connect: Codable {
+    struct Connect: Codable, Sendable {
         let status: String?
         let userCount: Int?
         let messageList: [MessageList]?
     }
 
     // MARK: - MessageList
-    struct MessageList: Codable {
+    struct MessageList: Codable, Sendable {
         let nickName: String?
         let body: Body?
         let profileImage: ProfileImage?
@@ -74,12 +76,12 @@ enum CardListDTO {
     }
 
     // MARK: - Body
-    struct Body: Codable {
+    struct Body: Codable, Sendable {
         let type: String?
         let value: Value?
     }
 
-    enum Value: Codable {
+    enum Value: Codable, Sendable {
         case profileImage(ProfileImage)
         case string(String)
 
@@ -108,14 +110,14 @@ enum CardListDTO {
     }
 
     // MARK: - Profile
-    struct Profile: Codable {
+    struct Profile: Codable, Sendable {
         let nickName: String?
         let location: Location?
         let profileImage: ProfileImage?
     }
 
     // MARK: - Location
-    struct Location: Codable {
+    struct Location: Codable, Sendable {
         let longitude, latitude: Double?
     }
 }

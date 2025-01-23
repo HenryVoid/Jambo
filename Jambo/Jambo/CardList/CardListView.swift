@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ComposableArchitecture
-import DesignSystem
 
 struct CardListView: View {
     @Bindable var store: StoreOf<CardListReducer>
@@ -17,7 +16,7 @@ struct CardListView: View {
             
         }
         .background { Color(.lightGray) }
-        .searchTopBar(leftAction: {}, rightAction: {})
+        .searchTopBar(leftItemTap: {}, rightItemTap: {})
     }
 }
 

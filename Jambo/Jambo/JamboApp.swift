@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DesignSystem
 
 @main
 struct JamboApp: App {
