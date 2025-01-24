@@ -20,6 +20,9 @@ struct CardListView: View {
             }
             .padding(12)
         }
+        .refreshable {
+            store.send(.onLoad)
+        }
         .background(.lineLight)
         .searchTopBar(leftItemTap: {}, rightItemTap: {})
         .task {

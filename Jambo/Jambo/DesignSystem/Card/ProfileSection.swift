@@ -20,7 +20,7 @@ struct ProfileSection: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(.textDefault)
                 
-                Text(model.contents)
+                Text(contents)
                     .font(.system(size: 14))
                     .fontWeight(.regular)
                     .foregroundStyle(.textLight)
@@ -28,6 +28,13 @@ struct ProfileSection: View {
             
             Spacer()
         }
+    }
+    
+    private var contents: String {
+        let time = TimeInterval(model.createdAt) / 1000.0
+        let dateTime = Date(timeIntervalSince1970: time).compareFromNow()
+        let distance = LocationManager.shared.distance(latitude: model.latitude, longitude: model.longitude)
+        return distance + dateTime
     }
 }
 

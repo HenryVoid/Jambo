@@ -10,12 +10,15 @@ import Foundation
 extension CardModel {
     struct ProfileModel: Sendable, Hashable {
         var nickname: String
-        var contents: String
+        var createdAt: Double
+        let longitude, latitude: Double
         var image: ImageModel
         
-        init(nickname: String, contents: String, image: ImageModel) {
+        init(nickname: String, createdAt: Double, longitude: Double, latitude: Double, image: ImageModel) {
             self.nickname = nickname
-            self.contents = contents
+            self.createdAt = createdAt
+            self.longitude = longitude
+            self.latitude = latitude
             self.image = image
         }
         
@@ -28,9 +31,10 @@ extension CardModel {
                 return nil
             }
             self.nickname = nickName
-            let time = TimeInterval(createdAt) / 1000.0
-            let dateTime = Date(timeIntervalSince1970: time).compareFromNow()
-            self.contents = dateTime
+            
+            self.latitude = location.latitude ?? 0
+            self.longitude = location.longitude ?? 0
+            self.createdAt = createdAt
             self.image = image
         }
     }
@@ -39,7 +43,9 @@ extension CardModel {
 extension CardModel.ProfileModel {
     static let mock: Self = .init(
         nickname: "Tiffany",
-        contents: "1km 1m ago",
+        createdAt: 1737355272282,
+        longitude: -73.707902000000004,
+        latitude: 40.743143000000003,
         image: .init(
             width: 40,
             height: 40,

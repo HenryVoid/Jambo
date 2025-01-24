@@ -9,5 +9,5 @@ import Foundation
 import NetworkKit
 
 extension API.Client {
-    static let shared = API.Client(session: URLSession(configuration: .default), logger: API.Logger.shared, interceptors: [])
+    static let shared = API.Client(session: URLSession(configuration: .default), monitor: nil, interceptors: [])
 }
