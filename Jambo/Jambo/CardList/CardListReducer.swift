@@ -15,12 +15,12 @@ struct CardListReducer {
     
     @ObservableState
     struct State: Equatable {
-        
+        var cards: [CardModel] = []
     }
     
     enum Action {
         case onLoad
-        case cardListResponse(Result<CardListDTO.Response, API.Error>)
+        case cardListResponse(Result<CardListDTO.Response, Error>)
     }
     
     private enum CancelID: Hashable { case list }
@@ -32,17 +32,17 @@ struct CardListReducer {
             switch action {
             case .onLoad:
                 return .run { send in
-                    let response = try await client.getList()
-                    await send(.cardListResponse(Result { response }))
+                    await send(.cardListResponse(Result { try await client.getList() }))
                 }
                 .cancellable(id: CancelID.list)
             case .cardListResponse(.success(let response)):
-                // TODO: State 로 맵핑
-                Log.debug("CardListResponse Success", response)
+                state.cards = response.list?.compactMap {
+                    CardModel(dto: $0)
+                } ?? []
                 return .none
             case .cardListResponse(.failure(let error)):
-                // TODO: Error 처리
-                Log.debug("CardListResponse failure", error)
+                Toast.shared.present(title: error.localizedDescription)
+                Log.error("CardListResponse failure", error)
                 return .none
             }
         }

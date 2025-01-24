@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Brand_Logotype.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

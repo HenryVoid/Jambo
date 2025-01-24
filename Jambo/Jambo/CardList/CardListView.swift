@@ -12,10 +12,18 @@ struct CardListView: View {
     @Bindable var store: StoreOf<CardListReducer>
     
     var body: some View {
-        Button {
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(spacing: 12) {
+                ForEach(store.cards) { card in
+                    Card(model: card, connectTap: {})
+                }
+            }
+            .padding(12)
+        }
+        .background(.lineLight)
+        .searchTopBar(leftItemTap: {}, rightItemTap: {})
+        .task {
             store.send(.onLoad)
-        } label: {
-            Text("API")
         }
     }
 }
