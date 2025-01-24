@@ -11,6 +11,21 @@ extension CardModel {
     struct CategoryModel: Sendable, Hashable {
         let name: String
         let imageURL: String
+        
+        init(name: String, imageURL: String) {
+            self.name = name
+            self.imageURL = imageURL
+        }
+        
+        init?(dto response: CardListDTO.Category?) {
+            guard let response,
+                  let name = response.name,
+                  let imageURL = response.imageURL else {
+                return nil
+            }
+            self.name = name
+            self.imageURL = imageURL
+        }
     }
 }
 

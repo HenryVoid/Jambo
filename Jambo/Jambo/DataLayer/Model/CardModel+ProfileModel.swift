@@ -12,6 +12,25 @@ extension CardModel {
         var nickname: String
         var contents: String
         var image: ImageModel
+        
+        init(nickname: String, contents: String, image: ImageModel) {
+            self.nickname = nickname
+            self.contents = contents
+            self.image = image
+        }
+        
+        init?(dto response: CardListDTO.Profile?, createdAt: Double?) {
+            guard let response,
+                  let nickName = response.nickName,
+                  let location = response.location,
+                  let image = ImageModel(dto: response.profileImage),
+                  let createdAt = createdAt else {
+                return nil
+            }
+            self.nickname = nickName
+            self.contents = Date(timeIntervalSince1970: createdAt).compareFromNow()
+            self.image = image
+        }
     }
 }
 

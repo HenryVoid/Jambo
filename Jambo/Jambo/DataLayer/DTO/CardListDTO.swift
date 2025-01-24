@@ -27,7 +27,7 @@ enum CardListDTO {
         let body: String?
         let cardImage: [ProfileImage]?
         let connect: Connect?
-        let createdAt: Int?
+        let createdAt: Double?
 
         enum CodingKeys: String, CodingKey {
             case cardType
@@ -72,7 +72,7 @@ enum CardListDTO {
         let nickName: String?
         let body: Body?
         let profileImage: ProfileImage?
-        let sendAt: Int?
+        let sendAt: Double?
     }
 
     // MARK: - Body

@@ -8,16 +8,33 @@
 import Foundation
 
 struct CardModel: Sendable, Hashable, Identifiable {
-    let id, type: String
+    let id: String
     let profile: ProfileModel
     let body: BodyModel
     let connect: ConnectModel
+    
+    init(id: String, profile: ProfileModel, body: BodyModel, connect: ConnectModel) {
+        self.id = id
+        self.profile = profile
+        self.body = body
+        self.connect = connect
+    }
+    
+    init?(dto response: CardListDTO.List?) {
+        guard let response,
+              let card = response.card,
+              let cardID = card.cardID,
+              let profile = ProfileModel(dto: response.profile, createdAt: response.card?.createdAt) else {
+            return nil
+        }
+        self.id = cardID
+        self.profile = profile
+    }
 }
 
 extension CardModel {
     static let mock: Self = .init(
         id: "678c8ad6b46da5a352066dd6",
-        type: "POST",
         profile: .mock,
         body: .mock,
         connect: .mock

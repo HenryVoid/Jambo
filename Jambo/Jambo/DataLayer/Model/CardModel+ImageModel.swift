@@ -13,6 +13,24 @@ extension CardModel {
         var width: CGFloat
         var height: CGFloat
         var url: String
+        
+        init(width: CGFloat, height: CGFloat, url: String) {
+            self.width = width
+            self.height = height
+            self.url = url
+        }
+        
+        init?(dto response: CardListDTO.ProfileImage?) {
+            guard let response,
+                  let width = response.width,
+                  let height = response.height,
+                  let imageURL = response.imageURL else {
+                return nil
+            }
+            self.width = CGFloat(width)
+            self.height = CGFloat(height)
+            self.url = imageURL
+        }
     }
 }
 

@@ -12,6 +12,21 @@ extension CardModel {
         var status: String
         var userCount: Int
         var messageList: [MessageModel]
+        
+        init(status: String, userCount: Int, messageList: [MessageModel]) {
+            self.status = status
+            self.userCount = userCount
+            self.messageList = messageList
+        }
+        
+        init?(dto response: CardListDTO.Connect?) {
+            guard let response,
+                  let status = response.status,
+                  let userCount = response.userCount,
+                  let messageList = response.messageList else {
+                return nil
+            }
+        }
     }
 }
 

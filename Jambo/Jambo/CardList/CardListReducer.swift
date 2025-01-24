@@ -15,7 +15,7 @@ struct CardListReducer {
     
     @ObservableState
     struct State: Equatable {
-        
+        var cards: [CardModel] = []
     }
     
     enum Action {
@@ -37,7 +37,9 @@ struct CardListReducer {
                 }
                 .cancellable(id: CancelID.list)
             case .cardListResponse(.success(let response)):
-                // TODO: State 로 맵핑
+                state.cards = response.list?.compactMap {
+                    CardModel(dto: $0)
+                } ?? []
                 Log.debug("CardListResponse Success", response)
                 return .none
             case .cardListResponse(.failure(let error)):

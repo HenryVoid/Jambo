@@ -18,6 +18,32 @@ extension CardModel {
         var nickName: String
         var profileImage: ImageModel
         var dateTime: String
+        
+        init(type: TYPE, nickName: String, profileImage: ImageModel, dateTime: String) {
+            self.type = type
+            self.nickName = nickName
+            self.profileImage = profileImage
+            self.dateTime = dateTime
+        }
+        
+        init?(dto response: CardListDTO.MessageList?) {
+            guard let response,
+                  let type = response.body?.value,
+                  let nickName = response.nickName,
+                  let profileImage = ImageModel(dto: response.profileImage),
+                  let sendAt = response.sendAt else {
+                return nil
+            }
+            switch type {
+            case .profileImage(let profileImage):
+                self.type = .image
+            case .string(let string):
+                self.type = .text(string)
+            }
+            self.nickName = nickName
+            self.profileImage = profileImage
+            self.dateTime = Date(timeIntervalSince1970: sendAt).compareFromNow()
+        }
     }
 }
 

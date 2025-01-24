@@ -12,6 +12,24 @@ extension CardModel {
         var category: CategoryModel
         var contents: String
         var images: [ImageModel]
+        
+        init(category: CategoryModel, contents: String, images: [ImageModel]) {
+            self.category = category
+            self.contents = contents
+            self.images = images
+        }
+        
+        init?(dto response: CardListDTO.Card?) {
+            guard let response,
+                  let category = CategoryModel(dto: response.category),
+                  let contents = response.body,
+                  let images = response.cardImage?.compactMap({ ImageModel(dto: $0) }) else {
+                      return nil
+                  }
+            self.category = category
+            self.contents = contents
+            self.images = images
+        }
     }
 }
 
