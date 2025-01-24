@@ -39,7 +39,6 @@ struct CardListReducer {
                 state.cards = response.list?.compactMap {
                     CardModel(dto: $0)
                 } ?? []
-                Log.network("CardListResponse Success", response)
                 return .none
             case .cardListResponse(.failure(let error)):
                 Toast.shared.present(title: error.localizedDescription)

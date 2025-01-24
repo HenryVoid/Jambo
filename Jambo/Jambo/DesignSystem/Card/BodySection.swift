@@ -23,6 +23,7 @@ struct BodySection: View {
         .padding(.top, 8)
     }
 }
+
 extension BodySection {
     private struct BodyImagesRow: View {
         var images: [CardModel.ImageModel]

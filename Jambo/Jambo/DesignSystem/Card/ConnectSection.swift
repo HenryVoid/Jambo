@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ConnectSection: View {
     var model: CardModel.ConnectModel
     var connectTap: () -> Void

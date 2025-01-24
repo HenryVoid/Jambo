@@ -28,10 +28,6 @@ struct CardListView: View {
     }
 }
 
-extension CardListView {
-    
-}
-
 #Preview {
     CardListView(store: .init(
         initialState: .init(),
