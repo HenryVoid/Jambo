@@ -35,14 +35,15 @@ extension CardModel {
                 return nil
             }
             switch type {
-            case .profileImage(let profileImage):
+            case .profileImage:
                 self.type = .image
             case .string(let string):
                 self.type = .text(string)
             }
             self.nickName = nickName
             self.profileImage = profileImage
-            self.dateTime = Date(timeIntervalSince1970: sendAt).compareFromNow()
+            let time = TimeInterval(sendAt) / 1000.0
+            self.dateTime = Date(timeIntervalSince1970: time).compareFromNow()
         }
     }
 }

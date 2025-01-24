@@ -17,10 +17,13 @@ struct Card: View {
             BodySection(model: model.body)
             
             Line().frame(height: 0.5).background(.lineLight)
+                .padding(.vertical, 12)
             
             ConnectSection(model: model.connect, connectTap: connectTap)
         }
         .padding(16)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 

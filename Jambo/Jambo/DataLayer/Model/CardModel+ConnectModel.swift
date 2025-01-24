@@ -26,6 +26,9 @@ extension CardModel {
                   let messageList = response.messageList else {
                 return nil
             }
+            self.status = status
+            self.userCount = userCount
+            self.messageList = messageList.compactMap { MessageModel(dto: $0) }
         }
     }
 }

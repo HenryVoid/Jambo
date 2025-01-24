@@ -12,6 +12,7 @@ extension Date {
     func toString(format: String = "yyyy.MM.dd") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
+        formatter.locale = Locale(identifier: "en_US")
         return formatter.string(from: self)
     }
     
@@ -25,13 +26,17 @@ extension Date {
      */
     func compareFromNow() -> String {
         let now = Date()
-        let compare = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now, to: self)
+        let compare = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: now)
         if let year = compare.year,
            year > 0 {
             return self.toString(format: "yyyy.MM.dd")
         }
         if let month = compare.month,
            month > 0 {
+            return self.toString(format: "MM.dd")
+        }
+        if let day = compare.day,
+           day > 0 {
             return self.toString(format: "MM.dd")
         }
         if let hour = compare.hour,

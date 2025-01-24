@@ -32,15 +32,14 @@ struct CardListReducer {
             switch action {
             case .onLoad:
                 return .run { send in
-                    let response = try await client.getList()
-                    await send(.cardListResponse(Result { response }))
+                    await send(.cardListResponse(Result { try await client.getList() }))
                 }
                 .cancellable(id: CancelID.list)
             case .cardListResponse(.success(let response)):
                 state.cards = response.list?.compactMap {
                     CardModel(dto: $0)
                 } ?? []
-                Log.debug("CardListResponse Success", response)
+                Log.network("CardListResponse Success", response)
                 return .none
             case .cardListResponse(.failure(let error)):
                 Toast.shared.present(title: error.localizedDescription)

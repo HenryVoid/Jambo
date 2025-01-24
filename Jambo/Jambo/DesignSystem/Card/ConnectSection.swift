@@ -17,28 +17,10 @@ struct ConnectSection: View {
             if model.messageList.isEmpty {
                 emptyText()
             } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack(spacing: 4) {
-                        Image(.icTalkPeople)
-                        Text(model.userCount.formatted())
-                            .fontWeight(.semibold)
-                        Text("people are talking")
-                            .fontWeight(.regular)
-                        
-                        Spacer()
-                    }
-                    .font(.system(size: 13))
-                    .foregroundStyle(.secondary50)
-                    
-                    ForEach(model.messageList) { message in
-                        CommentRow(model: message)
-                    }
-                }
+                commentSection()
             }
-            
             connectButton()
         }
-        .padding(.top, 12)
     }
 }
 
@@ -49,6 +31,27 @@ extension ConnectSection {
             .font(.system(size: 13))
             .fontWeight(.regular)
             .foregroundStyle(.textDefault)
+    }
+    
+    @ViewBuilder
+    private func commentSection() -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 4) {
+                Image(.icTalkPeople)
+                Text(model.userCount.formatted())
+                    .fontWeight(.semibold)
+                Text("people are talking")
+                    .fontWeight(.regular)
+                
+                Spacer()
+            }
+            .font(.system(size: 13))
+            .foregroundStyle(.secondary50)
+            
+            ForEach(model.messageList) { message in
+                CommentRow(model: message)
+            }
+        }
     }
     
     private struct CommentRow: View {

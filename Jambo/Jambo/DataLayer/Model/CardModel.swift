@@ -24,11 +24,15 @@ struct CardModel: Sendable, Hashable, Identifiable {
         guard let response,
               let card = response.card,
               let cardID = card.cardID,
-              let profile = ProfileModel(dto: response.profile, createdAt: response.card?.createdAt) else {
+              let profile = ProfileModel(dto: response.profile, createdAt: response.card?.createdAt),
+        let body = BodyModel(dto: response.card),
+        let connect = ConnectModel(dto: response.card?.connect) else {
             return nil
         }
         self.id = cardID
         self.profile = profile
+        self.body = body
+        self.connect = connect
     }
 }
 

@@ -128,7 +128,10 @@ struct SearchTopBarLeftItem: View {
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundStyle(Color(.primary50))
+                        
+                        Spacer()
                     }
+                    .padding(12)
                 }
         }
     }

@@ -28,7 +28,9 @@ extension CardModel {
                 return nil
             }
             self.nickname = nickName
-            self.contents = Date(timeIntervalSince1970: createdAt).compareFromNow()
+            let time = TimeInterval(createdAt) / 1000.0
+            let dateTime = Date(timeIntervalSince1970: time).compareFromNow()
+            self.contents = dateTime
             self.image = image
         }
     }
