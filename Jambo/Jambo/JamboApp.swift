@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct JamboApp: App {
+    @StateObject var locationManager: LocationManager = .shared
+    
     var body: some Scene {
         WindowGroup {
             RootView {
