@@ -7,13 +7,8 @@
 
 import SwiftUI
 
-struct CategoryModel: Sendable, Hashable {
-    let name: String
-    let imageURL: String
-}
-
 struct CategoryRow: View {
-    var category: CategoryModel
+    var category: CardModel.CategoryModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
@@ -39,5 +34,5 @@ struct CategoryRow: View {
 }
 
 #Preview {
-    CategoryRow(category: .init(name: "Talk & Listen", imageURL: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/categroy/Talk%26Listen.png"))
+    CategoryRow(category: .mock)
 }

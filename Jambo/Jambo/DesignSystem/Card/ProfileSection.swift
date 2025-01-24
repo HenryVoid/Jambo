@@ -7,14 +7,8 @@
 
 import SwiftUI
 
-struct ProfileModel: Sendable, Hashable {
-    var nickname: String
-    var contents: String
-    var image: ImageModel
-}
-
 struct ProfileSection: View {
-    var model: ProfileModel
+    var model: CardModel.ProfileModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -38,5 +32,5 @@ struct ProfileSection: View {
 }
 
 #Preview {
-    ProfileSection(model: .init(nickname: "Tiffany", contents: "1km 1m ago", image: .init(width: 40, height: 40, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png")))
+    ProfileSection(model: .mock)
 }

@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-struct ImageModel: Sendable, Hashable, Identifiable {
-    let id = UUID()
-    var width: CGFloat
-    var height: CGFloat
-    var url: String
-}
-
 struct ProfileImageView: View {
-    var model: ImageModel
+    var model: CardModel.ImageModel
     
     var body: some View {
         CacheAsyncImage(
@@ -36,5 +29,5 @@ struct ProfileImageView: View {
 }
 
 #Preview {
-    ProfileImageView(model: .init(width: 40, height: 40, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png"))
+    ProfileImageView(model: .mock)
 }

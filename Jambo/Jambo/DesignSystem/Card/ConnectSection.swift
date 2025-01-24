@@ -7,62 +7,106 @@
 
 import SwiftUI
 
-struct ConnectModel: Sendable, Hashable {
-    var status: String
-    var userCount: Int
-    var messageList: [MessageModel]
-}
-
-struct MessageModel: Sendable, Hashable, Identifiable {
-    enum TYPE: Hashable {
-        case text(String)
-        case image
-    }
-    let id = UUID()
-    var type: TYPE
-    var nickName: String
-    var profileImage: ImageModel
-    var dateTime: String
-}
 
 struct ConnectSection: View {
-    var model: ConnectModel
+    var model: CardModel.ConnectModel
     var connectTap: () -> Void
     
     var body: some View {
         VStack(spacing: 8) {
             if model.messageList.isEmpty {
-                Text("You can talk to me.😀")
+                emptyText()
+            } else {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 4) {
+                        Image(.icTalkPeople)
+                        Text(model.userCount.formatted())
+                            .fontWeight(.semibold)
+                        Text("people are talking")
+                            .fontWeight(.regular)
+                        
+                        Spacer()
+                    }
                     .font(.system(size: 13))
-                    .fontWeight(.regular)
-                    .foregroundStyle(.textDefault)
+                    .foregroundStyle(.secondary50)
+                    
+                    ForEach(model.messageList) { message in
+                        CommentRow(model: message)
+                    }
+                }
             }
             
-            Button {
-                connectTap()
-            } label: {
-                RoundedRectangle(cornerRadius: 13.6)
-                    .fill(.buttonPrimary)
-                    .overlay {
-                        HStack(spacing: 4) {
-                            Image(.icConnectButton)
-                            
-                            Text("Connect")
+            connectButton()
+        }
+        .padding(.top, 12)
+    }
+}
+
+extension ConnectSection {
+    @ViewBuilder
+    private func emptyText() -> some View {
+        Text("You can talk to me.😀")
+            .font(.system(size: 13))
+            .fontWeight(.regular)
+            .foregroundStyle(.textDefault)
+    }
+    
+    private struct CommentRow: View {
+        var model: CardModel.MessageModel
+        var body: some View {
+            HStack(spacing: 4) {
+                ProfileImageView(model: model.profileImage)
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(model.nickName)
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.textDefault)
+                    
+                    HStack(spacing: 4) {
+                        switch model.type {
+                        case .text(let string):
+                            Text(string)
                                 .font(.system(size: 13))
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
+                                .fontWeight(.regular)
+                                .foregroundStyle(.textDefault)
+                                .lineLimit(1)
+                        case .image:
+                            Image(.icPrepareImageMessage)
                         }
+                        
+                        Text(model.dateTime)
+                            .font(.system(size: 12))
+                            .fontWeight(.regular)
+                            .foregroundStyle(.textLighter)
                     }
-                    .frame(height: 34)
+                }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func connectButton() -> some View {
+        Button {
+            connectTap()
+        } label: {
+            RoundedRectangle(cornerRadius: 13.6)
+                .fill(.buttonPrimary)
+                .overlay {
+                    HStack(spacing: 4) {
+                        Image(.icConnectButton)
+                        
+                        Text("Connect")
+                            .font(.system(size: 13))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                    }
+                }
+                .frame(height: 34)
         }
     }
 }
 
 #Preview {
-    ConnectSection(model: .init(
-        status: "Connecting",
-        userCount: 2,
-        messageList: []
-    ))
+    ConnectSection(model: .mock, connectTap: {})
 }
