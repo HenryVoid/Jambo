@@ -42,7 +42,9 @@ extension BodySection {
                             },
                             placeholder: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(.textLighter)
+                                    .fill(.white)
+                                    .frame(width: model.width, height: model.height)
+                                    .redacted(reason: .placeholder)
                             }
                         )
                     }

@@ -22,6 +22,7 @@ struct CategoryRow: View {
                     Circle()
                         .stroke(.black, lineWidth: 1.0)
                         .frame(width: 14, height: 14)
+                        .redacted(reason: .placeholder)
                 }
             )
             
