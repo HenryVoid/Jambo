@@ -32,11 +32,29 @@ struct DateExtensionTests {
              •    1분 이상 → {minutes}min ago
              •    1분 미만 → "Now"
          */
-        let time = TimeInterval(1706153656)
-        let datetime = Date(timeIntervalSince1970: time)
-        let text = datetime.compareFromNow()
+        let sec = Date(timeIntervalSince1970: 1706153656) // 24.01.25 12:34:16
+        let min = Date(timeIntervalSince1970: 1706153716) // 24.01.25 12:35:16
+        let hr = Date(timeIntervalSince1970: 1706157256) // 24.01.25 13:34:16
+        let mon = Date(timeIntervalSince1970: 1708832116) // 24.01.25 12:34:16
+        let year = Date(timeIntervalSince1970: 1740454516) // 25.01.25 12:34:16
         
-        let expected = "2024.01.25"
-        #expect(expected == text)
+        let datetime = Date(timeIntervalSince1970: 1706153656) // 24.01.25 12:34:16
+        let secText = datetime.compare(from: sec)
+        let minText = datetime.compare(from: min)
+        let hrText = datetime.compare(from: hr)
+        let monText = datetime.compare(from: mon)
+        let yearText = datetime.compare(from: year)
+        
+        let exNow = "Now"
+        let exMin = "1min ago"
+        let exh = "1h ago"
+        let exMon = "01.25"
+        let exYear = "2024.01.25"
+        
+        #expect(secText == exNow)
+        #expect(minText == exMin)
+        #expect(hrText == exh)
+        #expect(monText == exMon)
+        #expect(yearText == exYear)
     }
 }

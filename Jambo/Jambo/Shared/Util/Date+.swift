@@ -24,9 +24,8 @@ extension Date {
          •    1분 이상 → {minutes}min ago
          •    1분 미만 → "Now"
      */
-    func compareFromNow() -> String {
-        let now = Date()
-        let compare = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: now)
+    func compare(from date: Date) -> String {
+        let compare = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: date)
         if let year = compare.year,
            year > 0 {
             return self.toString(format: "yyyy.MM.dd")

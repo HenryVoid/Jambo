@@ -42,7 +42,7 @@ extension CardModel {
             self.nickName = nickName
             self.profileImage = profileImage
             let time = TimeInterval(sendAt) / 1000.0
-            self.dateTime = Date(timeIntervalSince1970: time).compareFromNow()
+            self.dateTime = Date(timeIntervalSince1970: time).compare(from: Date())
         }
     }
 }
