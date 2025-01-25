@@ -8,12 +8,11 @@
 import Foundation
 
 extension CardModel {
-    struct MessageModel: Sendable, Hashable, Identifiable {
+    struct MessageModel: Sendable, Hashable {
         enum TYPE: Hashable {
             case text(String)
             case image
         }
-        let id = UUID()
         var type: TYPE
         var nickName: String
         var profileImage: ImageModel

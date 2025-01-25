@@ -8,8 +8,7 @@
 import Foundation
 
 extension CardModel {
-    struct ImageModel: Sendable, Hashable, Identifiable {
-        let id = UUID()
+    struct ImageModel: Sendable, Hashable {
         var width: CGFloat
         var height: CGFloat
         var url: String
