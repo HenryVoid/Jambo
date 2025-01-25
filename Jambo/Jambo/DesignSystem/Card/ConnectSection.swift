@@ -47,7 +47,7 @@ extension ConnectSection {
             .font(.system(size: 13))
             .foregroundStyle(.secondary50)
             
-            ForEach(model.messageList) { message in
+            ForEach(model.messageList, id: \.self) { message in
                 CommentRow(model: message)
             }
         }

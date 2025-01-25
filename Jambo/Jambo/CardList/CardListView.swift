@@ -17,6 +17,13 @@ struct CardListView: View {
                 ForEach(store.cards) { card in
                     Card(model: card, connectTap: {})
                 }
+                
+                if store.hasNext {
+                    ProgressView()
+                        .task {
+                            store.send(.nextPage)
+                        }
+                }
             }
             .padding(12)
         }

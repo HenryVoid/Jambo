@@ -31,7 +31,7 @@ extension BodySection {
         var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(images) { model in
+                    ForEach(images, id: \.self) { model in
                         CacheAsyncImage(
                             url: URL(string: model.url),
                             content: { image in
