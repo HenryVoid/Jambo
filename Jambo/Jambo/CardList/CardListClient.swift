@@ -12,7 +12,7 @@ import NetworkKit
 
 @DependencyClient
 struct CardListClient {
-    var getList: @Sendable () async throws -> CardListDTO.Response
+    var getList: @Sendable (_ id: String?) async throws -> CardListDTO.Response
 }
 
 extension CardListClient: TestDependencyKey {
@@ -21,8 +21,8 @@ extension CardListClient: TestDependencyKey {
 
 extension CardListClient: DependencyKey {
     static let liveValue: CardListClient = .init(
-        getList: {
-            let endpoint = CardListEndpoint.getCardList
+        getList: { id in
+            let endpoint = CardListEndpoint.getCardList(id: id)
             return try await API.Client.shared.request(endpoint, decode: CardListDTO.Response.self)
         }
     )
