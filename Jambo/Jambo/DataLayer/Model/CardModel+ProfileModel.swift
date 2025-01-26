@@ -49,7 +49,8 @@ extension CardModel.ProfileModel {
         image: .init(
             width: 40,
             height: 40,
-            url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png"
+            url: ""
+//            url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png"
         )
     )
 }

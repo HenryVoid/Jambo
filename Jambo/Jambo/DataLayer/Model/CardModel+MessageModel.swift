@@ -55,7 +55,8 @@ extension [CardModel.MessageModel] {
             profileImage: .init(
                 width: 30,
                 height: 30,
-                url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_7.png"
+//                url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_7.png"
+                url: ""
             ),
             dateTime: "3m ago"
         ),
@@ -75,7 +76,7 @@ extension [CardModel.MessageModel] {
             profileImage: .init(
                 width: 30,
                 height: 30,
-                url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_3.png"
+                url: ""
             ),
             dateTime: "5h ago"
         ),

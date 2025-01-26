@@ -10,6 +10,8 @@ import SwiftUI
 struct ProfileImageView: View {
     var model: CardModel.ImageModel
     
+    @State private var blinking: Bool = false
+    
     var body: some View {
         CacheAsyncImage(
             url: URL(string: model.url),
@@ -21,9 +23,13 @@ struct ProfileImageView: View {
             },
             placeholder: {
                 RoundedRectangle(cornerRadius: 16)
-                    .stroke(.black, lineWidth: 1.0)
+                    .fill(.lineLight)
                     .frame(width: model.width, height: model.height)
-                    .redacted(reason: .placeholder)
+                    .opacity(blinking ? 0.3 : 1)
+                    .animation(.easeInOut(duration: 1).repeatForever(), value: blinking)
+                    .onAppear {
+                        blinking.toggle()
+                    }
             }
         )
     }

@@ -28,6 +28,7 @@ struct BodySection: View {
 extension BodySection {
     private struct BodyImagesRow: View {
         var images: [CardModel.ImageModel]
+        @State private var blinking: Bool = false
         
         var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -42,9 +43,13 @@ extension BodySection {
                             },
                             placeholder: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(.white)
+                                    .fill(.lineLight)
                                     .frame(width: model.width, height: model.height)
-                                    .redacted(reason: .placeholder)
+                                    .opacity(blinking ? 0.5 : 1)
+                                    .animation(.easeInOut(duration: 1).repeatForever(), value: blinking)
+                                    .onAppear {
+                                        blinking.toggle()
+                                    }
                             }
                         )
                     }

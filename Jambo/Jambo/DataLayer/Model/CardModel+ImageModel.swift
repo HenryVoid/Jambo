@@ -34,12 +34,13 @@ extension CardModel {
 }
 
 extension CardModel.ImageModel {
-    static let mock: Self = .init(width: 40, height: 40, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png")
+//    static let mock: Self = .init(width: 40, height: 40, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/Thumbnail_8.png")
+    static let mock: Self = .init(width: 40, height: 40, url: "")
 }
 
 extension [CardModel.ImageModel] {
     static let mock: Self = [
-        .init(width: 334, height: 334, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/image_0.png"),
+        .init(width: 334, height: 334, url: ""),
         .init(width: 334, height: 334, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/image_0.png"),
         .init(width: 334, height: 334, url: "https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/image_0.png"),
     ]
