@@ -32,6 +32,27 @@ struct CardListReducerTests {
             $0.cards = (mock.list?.compactMap { CardModel(dto: $0) })!
         }
     }
+    
+    @Test
+    func 첫_진입_시_카드목록_없음() async throws {
+        let mock = CardListDTO.Response.emptyMock
+        let store = TestStore(
+            initialState: CardListReducer.State()
+        ) {
+            CardListReducer()
+        } withDependencies: {
+            $0.cardListClient.getList = { @Sendable _ in mock }
+        }
+        
+        await store.send(.onLoad) {
+            $0.initialize = true
+        }
+        await store.receive(\.cardListResponse) {
+            $0.initialize = false
+            $0.hasNext = mock.hasNext ?? false
+            $0.cards = (mock.list?.compactMap { CardModel(dto: $0) })!
+        }
+    }
 
     @Test
     func 새로고침() async throws {
