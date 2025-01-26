@@ -15,6 +15,7 @@ struct BodySection: View {
             CategoryRow(category: model.category)
             
             ExpandableText(text: model.contents, lineLimit: 5)
+            
             if model.images.count > 0 {
                 BodyImagesRow(images: model.images)
                     .padding(.top, 8)
@@ -41,7 +42,9 @@ extension BodySection {
                             },
                             placeholder: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(.textLighter)
+                                    .fill(.white)
+                                    .frame(width: model.width, height: model.height)
+                                    .redacted(reason: .placeholder)
                             }
                         )
                     }

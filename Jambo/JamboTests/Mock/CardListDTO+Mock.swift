@@ -9,6 +9,10 @@ import Foundation
 @testable import Jambo
 
 extension CardListDTO.Response {
+    static let emptyMock = Self(
+        list: [],
+        hasNext: false
+    )
     static let mock = Self(
         list: [
             .init(

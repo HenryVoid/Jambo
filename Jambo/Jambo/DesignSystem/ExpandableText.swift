@@ -11,7 +11,7 @@ struct ExpandableText: View {
     private var text: String = ""
     private var lineLimit: Int = 1
 
-    @State private var isTruncated: Bool? = nil
+    @State private var isTruncated: Bool = false
     @State private var isExpended: Bool = false
 
     init(text: String, lineLimit: Int) {
@@ -26,14 +26,12 @@ struct ExpandableText: View {
                 .fontWeight(.regular)
                 .hidden()
                 .onAppear {
-                    guard isTruncated == nil else { return }
                     isTruncated = false
                 }
 
             Color.clear
                 .hidden()
                 .onAppear {
-                    guard isTruncated == nil else { return }
                     isTruncated = true
                 }
         }
@@ -46,26 +44,18 @@ struct ExpandableText: View {
             .lineLimit(isExpended ? nil : lineLimit)
             .background(calculateTruncation())
             .overlay(alignment: .bottomTrailing) {
-                if isTruncated == true && !isExpended {
-                    Text(" ..View More")
+                if isTruncated && !isExpended {
+                    Text("...View More")
                         .font(.system(size: 13))
                         .fontWeight(.bold)
                         .foregroundStyle(.textDefault)
-                        .underline()
                         .onTapGesture {
                             withAnimation {
                                 self.isExpended.toggle()
                             }
                         }
-                        .background {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(
-                                    LinearGradient(gradient: Gradient(colors: [Color(white: 1, opacity: 0.8), .white]), startPoint: .leading, endPoint: .trailing)
-                                )
-                        }
+                        .background(.white)
                 }
-
-
             }
     }
 }

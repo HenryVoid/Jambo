@@ -23,6 +23,7 @@ struct ProfileImageView: View {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.black, lineWidth: 1.0)
                     .frame(width: model.width, height: model.height)
+                    .redacted(reason: .placeholder)
             }
         )
     }

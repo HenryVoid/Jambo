@@ -12,7 +12,6 @@ import NetworkKit
 @Reducer
 struct CardListReducer {
     @Dependency(\.cardListClient) var client
-    var locationManager: LocationManager = .init()
     
     @ObservableState
     struct State: Equatable {
